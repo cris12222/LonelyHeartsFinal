@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-colors-win8.css">
+    <link rel="shortcut icon" href="/static/imagen/loggo.ico">
+    <title>Lonely Hearts</title>
+
+</head>
+<body>
+<!-- Sidebar -->
+<div  class="w3-sidebar w3-light-grey w3-bar-block w3-quarter" style="width:15%">
+    <img src="/static/imagen/logo.png"  class="w3-bar-item">
+    <a href="/" class="w3-bar-item w3-button" id="princ">Principal</a>
+    <a href="/catalogo/" class="w3-bar-item w3-button">Albumes</a>
+    <a href="#" onclick="document.getElementById('id01').style.display='block'" class="w3-bar-item w3-button">Acerca de nosotros</a>
+</div>
+<div style="margin-left:10% ">
+    <div class="w3-container w3-win8-mauve" style="height:5%">
+        {% block encabezado %}
+
+        {% endblock %}
+    </div>
+</div>
+<div align="center">
+    <img src="/static/imagen/logo.png" align="center">
+</div>
+
+
+<div class="w3-container">
+  <div id="id01" class="w3-modal">
+    <div class="w3-modal-content">
+      <div class="w3-container">
+        <span onclick="document.getElementById('id01').style.display='none'" class="w3-button w3-display-topright">&times;</span>
+        <p>Dania Gamez Villegas</p>
+        <p>Lizbeth Sarahi Zayas Espinoza</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+
+function w3_close() {
+  document.getElementById("mySidebar").style.display = "none";
+}
+</script>
+</body>
+</html>

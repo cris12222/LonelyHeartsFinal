@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-colors-win8.css">
+    <title>Lonely Hearts</title>
+    <link rel="shortcut icon" href="/static/imagen/loggo.ico">
+</head>
+<body>
+<!-- Sidebar -->
+<div class="w3-sidebar w3-light-grey w3-bar-block w3-quarter" style="width:15%">
+    <img src="/static/imagen/logo.png"  class="w3-bar-item">
+    <a href="/" class="w3-bar-item w3-button">Principal</a>
+    <a href="/catalogo/" class="w3-bar-item w3-button">Albumes</a>
+    <a href="#" onclick="document.getElementById('id01').style.display='block'" class="w3-bar-item w3-button">Acerca de nosotros</a>
+
+</div>
+<div style="margin-left:15%">
+    <div class="w3-container w3-win8-mauve">
+        {% block encabezado %}
+            <h1 align="center"> Catálogo de álbumes en stock </h1>
+            <h3>{{ msg }}</h3>
+<a href="/insertar/">
+    <button type="submit" class="w3-button w3-white w3-border w3-border-purple w3-round-large w3-display-bottom w3-tiny">Agregar álbum al catalogo</button>
+</a> <br> <br>
+        {% endblock %}
+    </div>
+</div>
+
+<br>
+{% for i in range(productolen) %}
+
+    <div class="W3-container" style="margin-left:15%">
+        <div class="w3-card-4 w3-white" style="width:60%">
+
+            <div class="w3-container w3-center ">
+            <img src="/static/imagen/img{{ producto[i]["id"] }}.jpg" alt="Cover" align="left" style="width:270px" style=" height:850px">
+                <h3 align="center">{{ producto[i]["nombre"] }}</h3>
+                <h5 align="center">${{ producto[i]["precio"] }}</h5>
+                <h6 align="center">En Stock: {{ producto[i]["cantidad"] }}</h6>
+                <form action="/vender/">
+                    <button type="submit"
+                            class="w3-button w3-white w3-border w3-border-purple w3-round-large w3-display-bottom w3-tiny"
+                       {% if producto[i]["cantidad"]==0 %} disabled {% endif %}> Vender
+                    </button>
+                    <input type="hidden" name="id" value="{{ producto[i]["id"] }}">
+                    <input type="hidden" name="cantidad" value="{{ producto[i]["cantidad"] }}">
+                </form>
+                <form action="/editar/">
+                    <button type="submit"
+                            class="w3-button w3-white w3-border w3-border-purple w3-round-large w3-display-bottom w3-tiny">
+                        Editar
+                    </button>
+                    <input type="hidden" name="id" value="{{ producto[i]["id"] }}"></form>
+                <form action="/eliminar/">
+                    <button type="submit" class="w3-button w3-white w3-border w3-border-purple w3-round-large w3-display-bottom w3-tiny
+                    "{% if producto[i]["cantidad"] >0 %} disabled {% endif %}>Eliminar
+                    </button>
+                    <input type="hidden" name="id" value="{{ producto[i]["id"] }}">
+
+                </form>
+            <br>
+            </div>
+        </div>
+    </div>
+    </div>
+    <br>
+{% endfor %}
+<div class="w3-container">
+  <div id="id01" class="w3-modal">
+    <div class="w3-modal-content">
+      <div class="w3-container">
+        <span onclick="document.getElementById('id01').style.display='none'" class="w3-button w3-display-topright">&times;</span>
+        <p>Dania Gamez Villegas</p>
+        <p>Lizbeth Sarahi Zayas Espinoza</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<script>
+
+function w3_close() {
+  document.getElementById("mySidebar").style.display = "none";
+}
+</script>
+
+</body>
+</html>

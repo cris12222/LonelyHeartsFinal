@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-colors-win8.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-grey.css">
+    <title>Lonely Hearts</title>
+    <link rel="shortcut icon" href="/static/imagen/loggo.ico">
+</head>
+<style>
+    input[type=text] {
+        width: 50%;
+        padding: 12px 20px;
+        margin: 8px 0;
+        display: inline-block;
+        border: 1px solid #262D59;
+        border-radius: 4px;
+        box-sizing: border-box;
+    }
+
+    input[type=number] {
+        width: 50%;
+        padding: 12px 20px;
+        margin: 8px 0;
+        display: inline-block;
+        border: 1px solid #262D59;
+        border-radius: 4px;
+        box-sizing: border-box;
+    }
+
+    input[type=submit] {
+        width: 50%;
+        background-color: #5A6AD1;
+        color: white;
+        padding: 14px 20px;
+        margin: 8px 0;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+    input[type=submit]:hover {
+        background-color: #3A4487;
+    }
+
+    div {
+
+    }
+</style>
+<body>
+<!-- Sidebar -->
+<div class="w3-sidebar w3-light-grey w3-bar-block w3-quarter" style="width:15%">
+    <img src="/static/imagen/logo.png"  class="w3-bar-item">
+    <a href="/" class="w3-bar-item w3-button" id="princ">Principal</a>
+    <a href="/catalogo/" class="w3-bar-item w3-button">Albumes</a>
+    <a href="#" onclick="document.getElementById('id01').style.display='block'" class="w3-bar-item w3-button">Acerca de nosotros</a>
+
+</div>
+<div style="margin-left:15%">
+    <div class="w3-container  w3-win8-mauve">
+        {% block encabezado %}
+            <h1 align="center"> Registrar nuevo álbum </h1>
+        {% endblock %}
+    </div>
+</div>
+
+
+<h2><h2>{{ msg }}</h2></h2>
+<div  style="margin-left:15%" class="w3-container w3-theme-l3">
+    <form action="/registro/" method="post">
+
+        <h3>Nombre del Producto</h3>
+        <input type="text" id="producto" name="producto" placeholder="Producto">
+        <h3>Cantidad del Producto</h3>
+        <input type="number" id="cantidad" name="cantidad" placeholder="Cantidad">
+        <h3>Precio del Producto</h3>
+        <input type="number" step="any" id="precio" name="precio" placeholder="Precio">
+        <input type="submit" value="Añadir">
+    </form>
+</div>
+
+
+<div class="w3-container">
+  <div id="id01" class="w3-modal">
+    <div class="w3-modal-content">
+      <div class="w3-container">
+        <span onclick="document.getElementById('id01').style.display='none'" class="w3-button w3-display-topright">&times;</span>
+        <p>Dania Gamez Villegas</p>
+        <p>Lizbeth Sarahi Zayas Espinoza</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+
+function w3_close() {
+  document.getElementById("mySidebar").style.display = "none";
+}
+</script>
+</body>
+</html>
